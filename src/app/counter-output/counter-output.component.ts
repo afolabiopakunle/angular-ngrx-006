@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { CounterInterface } from '../state/state';
 
 @Component({
   selector: 'app-counter-output',
@@ -8,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CounterOutputComponent implements OnInit {
 
   count = 0;
-  constructor() { }
+  constructor(private store: Store<{count: CounterInterface}>) { }
 
   ngOnInit() {
   }
