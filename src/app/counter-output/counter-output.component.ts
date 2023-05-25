@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { CounterInterface } from '../state/state';
 
 @Component({
@@ -9,10 +10,11 @@ import { CounterInterface } from '../state/state';
 })
 export class CounterOutputComponent implements OnInit {
 
-  count = 0;
+  count$: Observable<CounterInterface>
   constructor(private store: Store<{count: CounterInterface}>) { }
 
   ngOnInit() {
+    this.count$ = this.store.select('count')
   }
 
 }
